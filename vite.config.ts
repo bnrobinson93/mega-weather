@@ -1,7 +1,7 @@
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vitest/config'
 import { VitePWA } from 'vite-plugin-pwa'
+import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   plugins: [
@@ -10,6 +10,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
+        id: '/',
         name: 'Mega Weather',
         short_name: 'Weather',
         description: 'Optimal-model weather forecasts for your location',
@@ -20,9 +21,29 @@ export default defineConfig({
           { src: '/icons/192.png', sizes: '192x192', type: 'image/png' },
           { src: '/icons/512.png', sizes: '512x512', type: 'image/png' },
         ],
+        screenshots: [
+          {
+            src: '/screenshots/desktop.png',
+            sizes: '1280x800',
+            type: 'image/png',
+            form_factor: 'wide',
+            label:
+              'Mega Weather — current conditions, hourly and 7-day forecast',
+          },
+          {
+            src: '/screenshots/mobile.png',
+            sizes: '390x844',
+            type: 'image/png',
+            form_factor: 'narrow',
+            label: 'Mega Weather — mobile view',
+          },
+        ],
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+      },
+      devOptions: {
+        enabled: true,
       },
     }),
   ],

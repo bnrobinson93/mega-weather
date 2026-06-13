@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800">
+  <rect width="1280" height="800" fill="#0f172a"/>
+  <text x="640" y="52" font-family="sans-serif" font-size="18" font-weight="600" fill="#e2e8f0" text-anchor="middle">Mega Weather</text>
+  <rect x="416" y="68" width="448" height="164" rx="20" fill="#1e293b"/>
+  <text x="436" y="96" font-family="sans-serif" font-size="13" fill="#94a3b8">Austin, TX, United States</text>
+  <text x="436" y="168" font-family="sans-serif" font-size="80" font-weight="700" fill="#f1f5f9">72°</text>
+  <text x="556" y="128" font-family="sans-serif" font-size="14" fill="#94a3b8">Partly Cloudy</text>
+  <text x="556" y="152" font-family="sans-serif" font-size="13" fill="#64748b">Feels like 70°</text>
+  <text x="556" y="174" font-family="sans-serif" font-size="13" fill="#64748b">Humidity 55%  Wind 8 mph SW</text>
+  <text x="436" y="216" font-family="sans-serif" font-size="13" fill="#64748b">Precip: 0.00 in</text>
+  <rect x="416" y="248" width="448" height="34" rx="10" fill="#1e293b"/>
+  <text x="432" y="270" font-family="sans-serif" font-size="12" fill="#64748b">Optimal model:</text>
+  <text x="532" y="270" font-family="sans-serif" font-size="12" font-weight="600" fill="#94a3b8">NOAA HRRR + GFS</text>
+  <text x="680" y="270" font-family="sans-serif" font-size="11" fill="#475569">National Weather Service</text>
+  <text x="416" y="336" font-family="sans-serif" font-size="10" font-weight="600" fill="#475569" letter-spacing="1">NEXT 24 HOURS</text>
+  
+      <rect x="416" y="348" width="58" height="90" rx="16" fill="#1e293b"/>
+      <text x="445" y="370" font-family="sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Now</text>
+      <circle cx="445" cy="396" r="10" fill="#fbbf24"/>
+      <text x="445" y="420" font-family="sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">72°</text>
+      <rect x="482" y="348" width="58" height="90" rx="16" fill="#1e293b"/>
+      <text x="511" y="370" font-family="sans-serif" font-size="11" fill="#64748b" text-anchor="middle">2pm</text>
+      <circle cx="511" cy="396" r="10" fill="#fbbf24"/>
+      <text x="511" y="420" font-family="sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">74°</text>
+      <rect x="548" y="348" width="58" height="90" rx="16" fill="#1e293b"/>
+      <text x="577" y="370" font-family="sans-serif" font-size="11" fill="#64748b" text-anchor="middle">3pm</text>
+      <circle cx="577" cy="396" r="10" fill="#fbbf24"/>
+      <text x="577" y="420" font-family="sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">75°</text>
+      <rect x="614" y="348" width="58" height="90" rx="16" fill="#1e293b"/>
+      <text x="643" y="370" font-family="sans-serif" font-size="11" fill="#64748b" text-anchor="middle">4pm</text>
+      <circle cx="643" cy="396" r="10" fill="#fbbf24"/>
+      <text x="643" y="420" font-family="sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">73°</text>
+      <rect x="680" y="348" width="58" height="90" rx="16" fill="#1e293b"/>
+      <text x="709" y="370" font-family="sans-serif" font-size="11" fill="#64748b" text-anchor="middle">5pm</text>
+      <circle cx="709" cy="396" r="10" fill="#fbbf24"/>
+      <text x="709" y="420" font-family="sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">70°</text>
+      <rect x="746" y="348" width="58" height="90" rx="16" fill="#1e293b"/>
+      <text x="775" y="370" font-family="sans-serif" font-size="11" fill="#64748b" text-anchor="middle">6pm</text>
+      <circle cx="775" cy="396" r="10" fill="#fbbf24"/>
+      <text x="775" y="420" font-family="sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">67°</text>
+      <rect x="812" y="348" width="58" height="90" rx="16" fill="#1e293b"/>
+      <text x="841" y="370" font-family="sans-serif" font-size="11" fill="#64748b" text-anchor="middle">7pm</text>
+      <circle cx="841" cy="396" r="10" fill="#fbbf24"/>
+      <text x="841" y="420" font-family="sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="middle">64°</text>
+  <text x="416" y="470" font-family="sans-serif" font-size="10" font-weight="600" fill="#475569" letter-spacing="1">7-DAY FORECAST</text>
+  
+      <rect x="416" y="480" width="448" height="36" rx="10" fill="#1e293b"/>
+      <text x="432" y="503" font-family="sans-serif" font-size="13" fill="#cbd5e1" font-weight="500">Today</text>
+      <text x="506" y="503" font-family="sans-serif" font-size="12" fill="#64748b">Partly Cloudy</text>
+      <text x="806" y="503" font-family="sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="end">75°</text>
+      <text x="848" y="503" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="end">58°</text>
+      <rect x="416" y="522" width="448" height="36" rx="10" fill="#1e293b"/>
+      <text x="432" y="545" font-family="sans-serif" font-size="13" fill="#cbd5e1" font-weight="500">Tue</text>
+      <text x="506" y="545" font-family="sans-serif" font-size="12" fill="#64748b">Sunny</text>
+      <text x="806" y="545" font-family="sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="end">79°</text>
+      <text x="848" y="545" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="end">62°</text>
+      <rect x="416" y="564" width="448" height="36" rx="10" fill="#1e293b"/>
+      <text x="432" y="587" font-family="sans-serif" font-size="13" fill="#cbd5e1" font-weight="500">Wed</text>
+      <text x="506" y="587" font-family="sans-serif" font-size="12" fill="#64748b">Scattered Showers</text>
+      <text x="806" y="587" font-family="sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="end">68°</text>
+      <text x="848" y="587" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="end">54°</text>
+      <rect x="416" y="606" width="448" height="36" rx="10" fill="#1e293b"/>
+      <text x="432" y="629" font-family="sans-serif" font-size="13" fill="#cbd5e1" font-weight="500">Thu</text>
+      <text x="506" y="629" font-family="sans-serif" font-size="12" fill="#64748b">Cloudy</text>
+      <text x="806" y="629" font-family="sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="end">63°</text>
+      <text x="848" y="629" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="end">50°</text>
+      <rect x="416" y="648" width="448" height="36" rx="10" fill="#1e293b"/>
+      <text x="432" y="671" font-family="sans-serif" font-size="13" fill="#cbd5e1" font-weight="500">Fri</text>
+      <text x="506" y="671" font-family="sans-serif" font-size="12" fill="#64748b">Mostly Sunny</text>
+      <text x="806" y="671" font-family="sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="end">71°</text>
+      <text x="848" y="671" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="end">55°</text>
+      <rect x="416" y="690" width="448" height="36" rx="10" fill="#1e293b"/>
+      <text x="432" y="713" font-family="sans-serif" font-size="13" fill="#cbd5e1" font-weight="500">Sat</text>
+      <text x="506" y="713" font-family="sans-serif" font-size="12" fill="#64748b">Sunny</text>
+      <text x="806" y="713" font-family="sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="end">77°</text>
+      <text x="848" y="713" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="end">60°</text>
+      <rect x="416" y="732" width="448" height="36" rx="10" fill="#1e293b"/>
+      <text x="432" y="755" font-family="sans-serif" font-size="13" fill="#cbd5e1" font-weight="500">Sun</text>
+      <text x="506" y="755" font-family="sans-serif" font-size="12" fill="#64748b">Clear</text>
+      <text x="806" y="755" font-family="sans-serif" font-size="13" font-weight="600" fill="#f1f5f9" text-anchor="end">80°</text>
+      <text x="848" y="755" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="end">63°</text>
+  <text x="640" y="780" font-family="sans-serif" font-size="11" fill="#334155" text-anchor="middle">Weather data by Open-Meteo under CC BY 4.0</text>
+</svg>

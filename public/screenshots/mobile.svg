@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844">
+  <rect width="390" height="844" fill="#0f172a"/>
+  <!-- header -->
+  <text x="195" y="48" font-family="sans-serif" font-size="16" font-weight="600" fill="#e2e8f0" text-anchor="middle">Mega Weather</text>
+  <!-- location -->
+  <text x="195" y="96" font-family="sans-serif" font-size="11" fill="#64748b" text-anchor="middle">AUSTIN, TX, UNITED STATES</text>
+  <!-- big weather icon (sun) -->
+  <circle cx="195" cy="198" r="52" fill="#fbbf24"/>
+  <line x1="195" y1="130" x2="195" y2="118" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>
+  <line x1="195" y1="266" x2="195" y2="278" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>
+  <line x1="127" y1="198" x2="115" y2="198" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>
+  <line x1="263" y1="198" x2="275" y2="198" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>
+  <line x1="147" y1="150" x2="139" y2="142" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>
+  <line x1="243" y1="150" x2="251" y2="142" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>
+  <line x1="147" y1="246" x2="139" y2="254" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>
+  <line x1="243" y1="246" x2="251" y2="254" stroke="#fbbf24" stroke-width="6" stroke-linecap="round"/>
+  <!-- temperature -->
+  <text x="195" y="330" font-family="sans-serif" font-size="72" font-weight="700" fill="#f1f5f9" text-anchor="middle">72°</text>
+  <!-- condition -->
+  <text x="195" y="362" font-family="sans-serif" font-size="16" fill="#94a3b8" text-anchor="middle">Partly Cloudy</text>
+  <text x="195" y="386" font-family="sans-serif" font-size="13" fill="#64748b" text-anchor="middle">Feels like 70°</text>
+  <!-- wind / humidity -->
+  <text x="135" y="420" font-family="sans-serif" font-size="13" fill="#64748b" text-anchor="middle">55% humidity</text>
+  <text x="255" y="420" font-family="sans-serif" font-size="13" fill="#64748b" text-anchor="middle">8 mph SW</text>
+  <!-- model badge -->
+  <rect x="16" y="432" width="358" height="28" rx="8" fill="#1e293b"/>
+  <text x="195" y="450" font-family="sans-serif" font-size="11" fill="#94a3b8" font-weight="600" text-anchor="middle">NOAA HRRR + GFS — National Weather Service</text>
+  <!-- hourly label -->
+  <text x="16" y="462" font-family="sans-serif" font-size="9" font-weight="600" fill="#475569" letter-spacing="1">NEXT 24 HOURS</text>
+  
+      <rect x="16" y="470" width="52" height="82" rx="14" fill="#1e293b"/>
+      <text x="42" y="490" font-family="sans-serif" font-size="10" fill="#64748b" text-anchor="middle">Now</text>
+      <circle cx="42" cy="512" r="9" fill="#fbbf24"/>
+      <text x="42" y="535" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9" text-anchor="middle">72°</text>
+      <rect x="76" y="470" width="52" height="82" rx="14" fill="#1e293b"/>
+      <text x="102" y="490" font-family="sans-serif" font-size="10" fill="#64748b" text-anchor="middle">2pm</text>
+      <circle cx="102" cy="512" r="9" fill="#fbbf24"/>
+      <text x="102" y="535" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9" text-anchor="middle">74°</text>
+      <rect x="136" y="470" width="52" height="82" rx="14" fill="#1e293b"/>
+      <text x="162" y="490" font-family="sans-serif" font-size="10" fill="#64748b" text-anchor="middle">3pm</text>
+      <circle cx="162" cy="512" r="9" fill="#fbbf24"/>
+      <text x="162" y="535" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9" text-anchor="middle">75°</text>
+      <rect x="196" y="470" width="52" height="82" rx="14" fill="#1e293b"/>
+      <text x="222" y="490" font-family="sans-serif" font-size="10" fill="#64748b" text-anchor="middle">4pm</text>
+      <circle cx="222" cy="512" r="9" fill="#fbbf24"/>
+      <text x="222" y="535" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9" text-anchor="middle">73°</text>
+      <rect x="256" y="470" width="52" height="82" rx="14" fill="#1e293b"/>
+      <text x="282" y="490" font-family="sans-serif" font-size="10" fill="#64748b" text-anchor="middle">5pm</text>
+      <circle cx="282" cy="512" r="9" fill="#fbbf24"/>
+      <text x="282" y="535" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9" text-anchor="middle">70°</text>
+      <rect x="316" y="470" width="52" height="82" rx="14" fill="#1e293b"/>
+      <text x="342" y="490" font-family="sans-serif" font-size="10" fill="#64748b" text-anchor="middle">6pm</text>
+      <circle cx="342" cy="512" r="9" fill="#fbbf24"/>
+      <text x="342" y="535" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9" text-anchor="middle">67°</text>
+      <rect x="376" y="470" width="52" height="82" rx="14" fill="#1e293b"/>
+      <text x="402" y="490" font-family="sans-serif" font-size="10" fill="#64748b" text-anchor="middle">7pm</text>
+      <circle cx="402" cy="512" r="9" fill="#fbbf24"/>
+      <text x="402" y="535" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9" text-anchor="middle">64°</text>
+  <!-- 7-day label -->
+  <text x="16" y="572" font-family="sans-serif" font-size="9" font-weight="600" fill="#475569" letter-spacing="1">7-DAY FORECAST</text>
+  
+      <rect x="16" y="580" width="358" height="30" rx="8" fill="#1e293b"/>
+      <text x="28" y="600" font-family="sans-serif" font-size="12" fill="#cbd5e1" font-weight="500">Today</text>
+      <text x="86" y="600" font-family="sans-serif" font-size="11" fill="#64748b">Partly Cloudy</text>
+      <text x="332" y="600" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9" text-anchor="end">75°</text>
+      <text x="370" y="600" font-family="sans-serif" font-size="12" fill="#475569" text-anchor="end">58°</text>
+      <rect x="16" y="616" width="358" height="30" rx="8" fill="#1e293b"/>
+      <text x="28" y="636" font-family="sans-serif" font-size="12" fill="#cbd5e1" font-weight="500">Tue</text>
+      <text x="86" y="636" font-family="sans-serif" font-size="11" fill="#64748b">Sunny</text>
+      <text x="332" y="636" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9" text-anchor="end">79°</text>
+      <text x="370" y="636" font-family="sans-serif" font-size="12" fill="#475569" text-anchor="end">62°</text>
+      <rect x="16" y="652" width="358" height="30" rx="8" fill="#1e293b"/>
+      <text x="28" y="672" font-family="sans-serif" font-size="12" fill="#cbd5e1" font-weight="500">Wed</text>
+      <text x="86" y="672" font-family="sans-serif" font-size="11" fill="#64748b">Scattered Showers</text>
+      <text x="332" y="672" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9" text-anchor="end">68°</text>
+      <text x="370" y="672" font-family="sans-serif" font-size="12" fill="#475569" text-anchor="end">54°</text>
+      <rect x="16" y="688" width="358" height="30" rx="8" fill="#1e293b"/>
+      <text x="28" y="708" font-family="sans-serif" font-size="12" fill="#cbd5e1" font-weight="500">Thu</text>
+      <text x="86" y="708" font-family="sans-serif" font-size="11" fill="#64748b">Cloudy</text>
+      <text x="332" y="708" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9" text-anchor="end">63°</text>
+      <text x="370" y="708" font-family="sans-serif" font-size="12" fill="#475569" text-anchor="end">50°</text>
+      <rect x="16" y="724" width="358" height="30" rx="8" fill="#1e293b"/>
+      <text x="28" y="744" font-family="sans-serif" font-size="12" fill="#cbd5e1" font-weight="500">Fri</text>
+      <text x="86" y="744" font-family="sans-serif" font-size="11" fill="#64748b">Mostly Sunny</text>
+      <text x="332" y="744" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9" text-anchor="end">71°</text>
+      <text x="370" y="744" font-family="sans-serif" font-size="12" fill="#475569" text-anchor="end">55°</text>
+      <rect x="16" y="760" width="358" height="30" rx="8" fill="#1e293b"/>
+      <text x="28" y="780" font-family="sans-serif" font-size="12" fill="#cbd5e1" font-weight="500">Sat</text>
+      <text x="86" y="780" font-family="sans-serif" font-size="11" fill="#64748b">Sunny</text>
+      <text x="332" y="780" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9" text-anchor="end">77°</text>
+      <text x="370" y="780" font-family="sans-serif" font-size="12" fill="#475569" text-anchor="end">60°</text>
+      <rect x="16" y="796" width="358" height="30" rx="8" fill="#1e293b"/>
+      <text x="28" y="816" font-family="sans-serif" font-size="12" fill="#cbd5e1" font-weight="500">Sun</text>
+      <text x="86" y="816" font-family="sans-serif" font-size="11" fill="#64748b">Clear</text>
+      <text x="332" y="816" font-family="sans-serif" font-size="12" font-weight="600" fill="#f1f5f9" text-anchor="end">80°</text>
+      <text x="370" y="816" font-family="sans-serif" font-size="12" fill="#475569" text-anchor="end">63°</text>
+  <text x="195" y="828" font-family="sans-serif" font-size="10" fill="#334155" text-anchor="middle">Weather data by Open-Meteo — CC BY 4.0</text>
+</svg>

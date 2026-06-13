@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background -->
+  <rect width="100" height="100" rx="22" fill="#0f172a"/>
+
+  <!-- Sun (amber, partially behind cloud) -->
+  <circle cx="37" cy="42" r="19" fill="#fbbf24"/>
+
+  <!-- Sun rays -->
+  <line x1="37" y1="17" x2="37" y2="10" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/>
+  <line x1="12" y1="42" x2="6"  y2="42" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/>
+  <line x1="62" y1="42" x2="68" y2="42" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/>
+  <line x1="20" y1="25" x2="15" y2="20" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/>
+  <line x1="54" y1="25" x2="59" y2="20" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/>
+  <line x1="20" y1="59" x2="15" y2="64" stroke="#fbbf24" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Cloud (slate-300, in front of sun) -->
+  <rect x="20" y="65" width="65" height="26" rx="13" fill="#cbd5e1"/>
+  <circle cx="38" cy="65" r="15" fill="#cbd5e1"/>
+  <circle cx="58" cy="59" r="19" fill="#cbd5e1"/>
+  <circle cx="73" cy="66" r="12" fill="#cbd5e1"/>
+</svg>
