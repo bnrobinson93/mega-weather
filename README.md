@@ -1,73 +1,69 @@
-# React + TypeScript + Vite
+# Mega Weather
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Progressive web app that uses your location to show current conditions, hourly and 7-day forecasts, air quality, and UV index — powered by [Open-Meteo](https://open-meteo.com/) with automatic regional model selection.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Current conditions** — temperature, feels like, humidity, wind, precipitation
+- **24-hour hourly forecast** — scrollable strip with precip probability
+- **7-day forecast** — high/low temps, condition icon, precip chance
+- **Air quality** — US AQI, EU AQI, PM2.5, PM10
+- **UV index** — tap to expand a day-long UV chart
+- **Regional model badge** — infers the best-fit NWP model for your coordinates (HRRR/GFS for US, GEM for Canada, ICON-EU/ECMWF for Europe, etc.)
+- **PWA** — installable, offline-capable via Workbox service worker
+- **No API key** — Open-Meteo is free for non-commercial use (attribution required under CC BY 4.0)
 
-## React Compiler
+## Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Layer | Choice |
+|---|---|
+| Framework | React 19 + TypeScript |
+| Build | Vite 8 |
+| Styling | Tailwind CSS v4 |
+| Data fetching | TanStack Query v5 |
+| Charts | Recharts |
+| PWA | vite-plugin-pwa + Workbox |
+| Lint / format | Biome |
+| Tests | Vitest + jsdom |
 
-## Expanding the ESLint configuration
+## Development
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Requires [mise](https://mise.jdx.dev/) with pnpm configured.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+mise exec -- pnpm install
+mise exec -- pnpm dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Commands
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm dev              # start dev server
+pnpm build            # type-check + production build
+pnpm preview          # preview production build
+pnpm test             # run unit tests
+pnpm test:watch       # watch mode
+pnpm check            # Biome lint + format check
+pnpm format           # auto-format
+pnpm licenses:check   # verify all deps use approved licenses
+pnpm licenses:report  # generate THIRD_PARTY_LICENSES.md
 ```
+
+## API calls per page load
+
+| Request | When |
+|---|---|
+| Open-Meteo forecast (current + hourly + daily) | Immediate |
+| Nominatim reverse geocode | Immediate |
+| Open-Meteo air quality (AQI + hourly UV) | On scroll into view |
+
+TanStack Query caches results for 5 minutes and deduplicates concurrent requests.
+
+## Attribution
+
+Weather data by [Open-Meteo](https://open-meteo.com/) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).  
+Geocoding by [Nominatim / OpenStreetMap](https://nominatim.org/).
+
+## License
+
+MIT — see [LICENSE](LICENSE).
