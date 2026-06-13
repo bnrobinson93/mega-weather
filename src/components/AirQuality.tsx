@@ -98,7 +98,7 @@ function UvChart({ points }: { points: UvHourlyPoint[] }) {
             color: '#f1f5f9',
           }}
           itemStyle={{ color: '#fbbf24' }}
-          formatter={(v: number) => [v, 'UV']}
+          formatter={(v) => [typeof v === 'number' ? v.toFixed(1) : v, 'UV']}
           labelFormatter={(label) => label}
         />
         <ReferenceLine
