@@ -19,7 +19,7 @@ export function HourlyForecast({ data }: Props) {
       <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 mb-3">
         Next 24 Hours
       </h2>
-      <div className="flex gap-3 overflow-x-auto px-4 pb-3">
+      <div className="flex gap-3 overflow-x-auto scrollbar-slim px-4 pb-3">
         {data.map((h, i) => {
           const info = getWeatherInfo(h.weatherCode)
           return (

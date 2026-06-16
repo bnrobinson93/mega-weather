@@ -12,7 +12,7 @@ export default defineConfig({
       manifest: {
         id: '/',
         name: 'Mega Weather',
-        short_name: 'Weather',
+        short_name: 'Mega Weather',
         description: 'Optimal-model weather forecasts for your location',
         theme_color: '#0f172a',
         background_color: '#0f172a',
