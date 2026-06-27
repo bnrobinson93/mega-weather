@@ -9,68 +9,111 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as DayDateRouteImport } from './routes/day.$date'
+import { Route as LocationRouteImport } from './routes/location'
+import { Route as AppRouteImport } from './routes/_app'
+import { Route as AppIndexRouteImport } from './routes/_app/index'
+import { Route as AppDayDateRouteImport } from './routes/_app/day.$date'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const LocationRoute = LocationRouteImport.update({
+  id: '/location',
+  path: '/location',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DayDateRoute = DayDateRouteImport.update({
+const AppRoute = AppRouteImport.update({
+  id: '/_app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDayDateRoute = AppDayDateRouteImport.update({
   id: '/day/$date',
   path: '/day/$date',
-  getParentRoute: () => rootRouteImport,
-} as any).lazy(() => import('./routes/day.$date.lazy').then((d) => d.Route))
+  getParentRoute: () => AppRoute,
+} as any).lazy(() =>
+  import('./routes/_app/day.$date.lazy').then((d) => d.Route),
+)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/day/$date': typeof DayDateRoute
+  '/': typeof AppIndexRoute
+  '/location': typeof LocationRoute
+  '/day/$date': typeof AppDayDateRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/day/$date': typeof DayDateRoute
+  '/location': typeof LocationRoute
+  '/': typeof AppIndexRoute
+  '/day/$date': typeof AppDayDateRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/day/$date': typeof DayDateRoute
+  '/_app': typeof AppRouteWithChildren
+  '/location': typeof LocationRoute
+  '/_app/': typeof AppIndexRoute
+  '/_app/day/$date': typeof AppDayDateRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/day/$date'
+  fullPaths: '/' | '/location' | '/day/$date'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/day/$date'
-  id: '__root__' | '/' | '/day/$date'
+  to: '/location' | '/' | '/day/$date'
+  id: '__root__' | '/_app' | '/location' | '/_app/' | '/_app/day/$date'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  DayDateRoute: typeof DayDateRoute
+  AppRoute: typeof AppRouteWithChildren
+  LocationRoute: typeof LocationRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/location': {
+      id: '/location'
+      path: '/location'
+      fullPath: '/location'
+      preLoaderRoute: typeof LocationRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/day/$date': {
-      id: '/day/$date'
+    '/_app': {
+      id: '/_app'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/': {
+      id: '/_app/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/day/$date': {
+      id: '/_app/day/$date'
       path: '/day/$date'
       fullPath: '/day/$date'
-      preLoaderRoute: typeof DayDateRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AppDayDateRouteImport
+      parentRoute: typeof AppRoute
     }
   }
 }
 
+interface AppRouteChildren {
+  AppIndexRoute: typeof AppIndexRoute
+  AppDayDateRoute: typeof AppDayDateRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppIndexRoute: AppIndexRoute,
+  AppDayDateRoute: AppDayDateRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  DayDateRoute: DayDateRoute,
+  AppRoute: AppRouteWithChildren,
+  LocationRoute: LocationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

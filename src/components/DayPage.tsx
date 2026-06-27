@@ -3,7 +3,7 @@ import { useWeatherContext } from '../contexts/weather'
 import { DayDetail } from './DayDetail'
 
 export function DayPage() {
-  const { date } = useParams({ from: '/day/$date' })
+  const { date } = useParams({ from: '/_app/day/$date' })
   const { weather, lat, lon } = useWeatherContext()
   const navigate = useNavigate()
 

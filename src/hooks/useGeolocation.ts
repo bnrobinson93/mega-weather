@@ -6,10 +6,13 @@ export type GeoState =
   | { status: 'success'; lat: number; lon: number }
   | { status: 'error'; message: string }
 
-export function useGeolocation(): GeoState {
-  const [state, setState] = useState<GeoState>({ status: 'loading' })
+export function useGeolocation(enabled = true): GeoState {
+  const [state, setState] = useState<GeoState>(
+    enabled ? { status: 'loading' } : { status: 'idle' },
+  )
 
   useEffect(() => {
+    if (!enabled) return
     if (!navigator.geolocation) {
       setState({
         status: 'error',
@@ -37,7 +40,7 @@ export function useGeolocation(): GeoState {
       },
       { timeout: 10000, maximumAge: 60000 },
     )
-  }, [])
+  }, [enabled])
 
   return state
 }
