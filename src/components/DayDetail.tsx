@@ -8,13 +8,13 @@ interface Props {
   lat: number
   lon: number
   day: DailyPoint
+  today: string
   onBack: () => void
 }
 
-function formatFullDay(dateStr: string): string {
+function formatFullDay(dateStr: string, today: string): string {
+  if (dateStr === today) return 'Today'
   const d = new Date(`${dateStr}T12:00:00`)
-  const today = new Date()
-  if (d.toDateString() === today.toDateString()) return 'Today'
   return d.toLocaleDateString('en-US', {
     weekday: 'long',
     month: 'short',
@@ -22,7 +22,7 @@ function formatFullDay(dateStr: string): string {
   })
 }
 
-export function DayDetail({ lat, lon, day, onBack }: Props) {
+export function DayDetail({ lat, lon, day, today, onBack }: Props) {
   const state = useDayWeather(lat, lon, day.date)
   const info = getWeatherInfo(day.weatherCode)
 
@@ -42,7 +42,7 @@ export function DayDetail({ lat, lon, day, onBack }: Props) {
         <span className="text-4xl leading-none">{info.icon}</span>
         <div className="flex flex-col">
           <span className="text-lg font-semibold text-white">
-            {formatFullDay(day.date)}
+            {formatFullDay(day.date, today)}
           </span>
           <span className="text-xs text-slate-400">{info.label}</span>
         </div>

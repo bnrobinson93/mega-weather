@@ -31,6 +31,7 @@ export function DayPage() {
       lat={lat}
       lon={lon}
       day={day}
+      today={weather.currentTime.slice(0, 10)}
       onBack={() => navigate({ to: '/' })}
     />
   )

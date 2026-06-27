@@ -3,17 +3,17 @@ import type { DailyPoint } from '../services/openMeteo'
 
 interface Props {
   data: DailyPoint[]
+  today: string
   onSelectDay: (day: DailyPoint) => void
 }
 
-function formatDay(dateStr: string): string {
+function formatDay(dateStr: string, today: string): string {
+  if (dateStr === today) return 'Today'
   const d = new Date(`${dateStr}T12:00:00`)
-  const today = new Date()
-  if (d.toDateString() === today.toDateString()) return 'Today'
   return d.toLocaleDateString('en-US', { weekday: 'short' })
 }
 
-export function DailyForecast({ data, onSelectDay }: Props) {
+export function DailyForecast({ data, today, onSelectDay }: Props) {
   return (
     <div className="w-full">
       <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 mb-3">
@@ -30,7 +30,7 @@ export function DailyForecast({ data, onSelectDay }: Props) {
               className="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 rounded-xl px-4 py-3 text-left cursor-pointer transition-colors"
             >
               <span className="text-sm text-slate-300 w-12 shrink-0">
-                {formatDay(d.date)}
+                {formatDay(d.date, today)}
               </span>
               <span className="text-xl leading-none">{info.icon}</span>
               <span className="text-xs text-slate-400 flex-1 truncate">

@@ -33,6 +33,8 @@ export interface DailyPoint {
 
 export interface WeatherData {
   current: CurrentWeather
+  /** Location-local "now" (offset-less ISO, e.g. 2026-06-27T12:00). */
+  currentTime: string
   hourly: HourlyPoint[]
   uvToday: UvHourlyPoint[]
   daily: DailyPoint[]
@@ -100,11 +102,22 @@ export async function fetchWeather(
   if (!res.ok) throw new Error(`Weather fetch failed: ${res.status}`)
   const d = await res.json()
 
-  const now = new Date()
-  const currentHourIndex = d.hourly.time.findIndex(
-    (t: string) => new Date(t) >= now,
-  )
-  const sliceFrom = Math.max(0, currentHourIndex === -1 ? 0 : currentHourIndex)
+  // Anchor "now" to the location's own clock. Open-Meteo returns local times
+  // (timezone=auto) as offset-less strings; comparing against the browser's
+  // Date would mix timezones. d.current.time is in the same local frame.
+  const currentTime: string | undefined = d.current?.time
+  let sliceFrom = 0
+  if (currentTime) {
+    const hourKey = currentTime.slice(0, 13) // YYYY-MM-DDTHH
+    let idx = d.hourly.time.findIndex((t: string) => t.slice(0, 13) === hourKey)
+    if (idx === -1)
+      idx = d.hourly.time.findIndex((t: string) => t >= currentTime)
+    sliceFrom = Math.max(0, idx)
+  } else {
+    const now = new Date()
+    const idx = d.hourly.time.findIndex((t: string) => new Date(t) >= now)
+    sliceFrom = Math.max(0, idx === -1 ? 0 : idx)
+  }
 
   const hourly: HourlyPoint[] = d.hourly.time
     .slice(sliceFrom, sliceFrom + 24)
@@ -145,6 +158,7 @@ export async function fetchWeather(
       uvIndex: d.current.uv_index,
       isDay: d.current.is_day === 1,
     },
+    currentTime: currentTime ?? d.hourly.time[sliceFrom],
     hourly,
     uvToday,
     daily,

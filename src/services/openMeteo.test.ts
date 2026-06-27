@@ -13,6 +13,7 @@ function makeResponse() {
     longitude: -97.74,
     timezone: 'America/Chicago',
     current: {
+      time: times[5],
       temperature_2m: 72.5,
       apparent_temperature: 70.1,
       relative_humidity_2m: 55,
@@ -126,6 +127,22 @@ describe('fetchWeather', () => {
 
     const data = await fetchWeather(30.27, -97.74)
     expect(data.hourly).toHaveLength(24)
+  })
+
+  it('anchors the hourly slice to current.time, not the browser clock', async () => {
+    const res = makeResponse()
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: () => Promise.resolve(res),
+      }),
+    )
+
+    const data = await fetchWeather(30.27, -97.74)
+    // current.time === hourly.time[5], so "Now" must be that entry.
+    expect(data.hourly[0].time).toBe(res.current.time)
+    expect(data.hourly[0].time).toBe(res.hourly.time[5])
   })
 
   it('throws on non-ok response', async () => {

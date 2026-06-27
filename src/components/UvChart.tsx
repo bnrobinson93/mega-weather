@@ -27,7 +27,13 @@ function useWidth() {
   return [ref, w] as const
 }
 
-export default function UvChart({ points }: { points: UvHourlyPoint[] }) {
+export default function UvChart({
+  points,
+  currentHour,
+}: {
+  points: UvHourlyPoint[]
+  currentHour: number
+}) {
   const [ref, width] = useWidth()
   const [hover, setHover] = useState<number | null>(null)
 
@@ -46,8 +52,7 @@ export default function UvChart({ points }: { points: UvHourlyPoint[] }) {
     .join(' ')
   const area = `${line} L${xFor(n - 1)},${y1} L${xFor(0)},${y1} Z`
 
-  const currentHour = new Date().getHours()
-  const hasCurrent = currentHour < n
+  const hasCurrent = currentHour >= 0 && currentHour < n
 
   const yTicks = [0, Math.round(yMax / 2), Math.round(yMax)].filter(
     (v, i, a) => a.indexOf(v) === i,

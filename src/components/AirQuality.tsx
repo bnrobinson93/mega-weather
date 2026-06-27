@@ -11,6 +11,7 @@ interface Props {
   lon: number
   uvIndex: number
   uvToday: UvHourlyPoint[]
+  nowHour: number
 }
 
 function Stat({
@@ -35,7 +36,7 @@ function AirQualitySkeleton() {
   return <div className="mx-4 h-28 bg-slate-800/50 rounded-2xl animate-pulse" />
 }
 
-export function AirQuality({ lat, lon, uvIndex, uvToday }: Props) {
+export function AirQuality({ lat, lon, uvIndex, uvToday, nowHour }: Props) {
   const [showUvChart, setShowUvChart] = useState(false)
   const [inView, ref] = useInView()
   const { data, error } = useQuery({
@@ -98,7 +99,7 @@ export function AirQuality({ lat, lon, uvIndex, uvToday }: Props) {
                       <div className="h-[110px] bg-slate-800/50 rounded animate-pulse" />
                     }
                   >
-                    <UvChart points={uvToday} />
+                    <UvChart points={uvToday} currentHour={nowHour} />
                   </Suspense>
                 </div>
               )}

@@ -10,6 +10,10 @@ export function HomePage() {
   const { weather, location, lat, lon } = useWeatherContext()
   const navigate = useNavigate()
 
+  // Location-local "today" / current hour, from the API's local clock.
+  const today = weather.currentTime.slice(0, 10)
+  const nowHour = Number(weather.currentTime.slice(11, 13))
+
   return (
     <>
       <CurrentWeather
@@ -27,9 +31,11 @@ export function HomePage() {
         lon={lon}
         uvIndex={weather.current.uvIndex}
         uvToday={weather.uvToday}
+        nowHour={nowHour}
       />
       <DailyForecast
         data={weather.daily}
+        today={today}
         onSelectDay={(d) =>
           navigate({ to: '/day/$date', params: { date: d.date } })
         }
