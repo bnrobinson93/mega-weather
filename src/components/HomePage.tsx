@@ -21,10 +21,6 @@ export function HomePage() {
         locationName={location.displayName}
       />
 
-      <div className="flex justify-center px-4">
-        <ModelBadge lat={lat} lon={lon} />
-      </div>
-
       <HourlyForecast data={weather.hourly} />
       <AirQuality
         lat={lat}
@@ -40,6 +36,10 @@ export function HomePage() {
           navigate({ to: '/day/$date', params: { date: d.date } })
         }
       />
+
+      <div className="flex justify-center px-4">
+        <ModelBadge lat={lat} lon={lon} />
+      </div>
     </>
   )
 }
