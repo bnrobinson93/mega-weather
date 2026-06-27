@@ -1,5 +1,6 @@
 import { createFileRoute, Outlet, useNavigate } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
+import { Backdrop } from '../components/Backdrop'
 import { WeatherProvider } from '../contexts/weather'
 import { useGeolocation } from '../hooks/useGeolocation'
 import { useWeather } from '../hooks/useWeather'
@@ -41,6 +42,11 @@ function AppLayout() {
           lon: weather.weather.longitude,
         }}
       >
+        <Backdrop
+          code={weather.weather.current.weatherCode}
+          isDay={weather.weather.current.isDay}
+          lat={weather.weather.latitude}
+        />
         <Outlet />
       </WeatherProvider>
     )

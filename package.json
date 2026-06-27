@@ -13,6 +13,7 @@
     "check": "biome check .",
     "format": "biome format --write .",
     "lint": "biome lint .",
+    "backdrops:fetch": "node scripts/fetch-backdrops.mjs",
     "licenses:check": "pnpm licenses list --json | node scripts/check-licenses.mjs",
     "licenses:report": "pnpm licenses list --json | node scripts/generate-license-report.mjs"
   },
@@ -35,6 +36,7 @@
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/ui": "^4.1.8",
     "jsdom": "^29.1.1",
+    "sharp": "^0.35.2",
     "tailwindcss": "^4.3.1",
     "typescript": "~6.0.3",
     "vite": "^8.0.12",

@@ -1,0 +1,167 @@
+[
+  {
+    "file": "day/spring/rain.webp",
+    "source": "https://www.pexels.com/photo/tulips-by-the-street-in-the-rain-9811503/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "day/spring/thunder.webp",
+    "source": "https://www.pexels.com/photo/grass-field-below-clouds-355441/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "day/summer/fog.webp",
+    "source": "https://www.pexels.com/photo/an-aerial-photography-of-green-trees-on-mountain-13444068/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "day/summer/rain.webp",
+    "source": "https://www.pexels.com/photo/green-grass-on-river-bank-12689417/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "day/summer/snow.webp",
+    "source": "https://www.pexels.com/photo/mountains-covered-with-snow-5594654/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "day/summer/thunder.webp",
+    "source": "https://www.pexels.com/photo/storm-cloud-lightening-in-the-sky-18851814/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "day/autumn/snow.webp",
+    "source": "https://www.pexels.com/photo/serene-winter-forest-with-light-snow-cover-29513767/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "day/autumn/thunder.webp",
+    "source": "https://www.pexels.com/photo/view-of-a-dry-corn-field-under-a-cloudy-sky-15048526/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "day/winter/clear.webp",
+    "source": "https://www.pexels.com/photo/serene-snowy-landscape-in-winter-forest-36209445/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "day/winter/rain.webp",
+    "source": "https://www.pexels.com/photo/moody-black-and-white-park-walkway-in-rain-30972334/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "day/winter/thunder.webp",
+    "source": "https://www.pexels.com/photo/grass-field-below-clouds-355441/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/spring/clear.webp",
+    "source": "https://www.pexels.com/photo/stars-on-clear-night-sky-19199736/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/spring/clouds.webp",
+    "source": "https://www.pexels.com/photo/empty-trees-in-a-park-at-night-19744175/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/spring/fog.webp",
+    "source": "https://www.pexels.com/photo/an-aerial-photography-of-city-buildings-at-night-10121239/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/spring/rain.webp",
+    "source": "https://www.pexels.com/photo/monochrome-shot-of-trees-while-raining-9807244/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/spring/snow.webp",
+    "source": "https://www.pexels.com/photo/road-in-snow-in-forest-at-night-15100466/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/spring/thunder.webp",
+    "source": "https://www.pexels.com/photo/thunderstorm-over-hills-18015078/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/summer/clear.webp",
+    "source": "https://www.pexels.com/photo/green-hills-against-starry-sky-4466993/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/summer/clouds.webp",
+    "source": "https://www.pexels.com/photo/a-silhouette-of-trees-during-a-sunset-5660740/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/summer/fog.webp",
+    "source": "https://www.pexels.com/photo/an-aerial-photography-of-city-buildings-at-night-10121239/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/summer/rain.webp",
+    "source": "https://www.pexels.com/photo/monochrome-shot-of-trees-while-raining-9807244/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/summer/snow.webp",
+    "source": "https://www.pexels.com/photo/snow-in-town-at-night-19322884/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/summer/thunder.webp",
+    "source": "https://www.pexels.com/photo/thunder-above-trees-17257467/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/autumn/clear.webp",
+    "source": "https://www.pexels.com/photo/stars-on-clear-sky-over-forest-trees-19850491/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/autumn/clouds.webp",
+    "source": "https://www.pexels.com/photo/illuminated-park-at-night-22798182/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/autumn/fog.webp",
+    "source": "https://www.pexels.com/photo/trees-during-a-foggy-night-5580440/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/autumn/rain.webp",
+    "source": "https://www.pexels.com/photo/couple-walking-under-umbrella-in-the-night-10161198/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/autumn/snow.webp",
+    "source": "https://www.pexels.com/photo/road-in-snow-in-forest-at-night-15100466/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/autumn/thunder.webp",
+    "source": "https://www.pexels.com/photo/thunderstorm-over-hills-18015078/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/winter/clear.webp",
+    "source": "https://www.pexels.com/photo/hill-under-starry-sky-10725327/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/winter/clouds.webp",
+    "source": "https://www.pexels.com/photo/lights-of-a-city-in-the-mountains-6326263/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/winter/fog.webp",
+    "source": "https://www.pexels.com/photo/trees-near-body-of-water-13636817/",
+    "license": "Pexels License"
+  },
+  {
+    "file": "night/winter/thunder.webp",
+    "source": "https://www.pexels.com/photo/lightning-in-sky-over-town-27196413/",
+    "license": "Pexels License"
+  }
+]

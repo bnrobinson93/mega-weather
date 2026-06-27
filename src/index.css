@@ -5,6 +5,15 @@ body {
   background-color: #0f172a;
 }
 
+/*
+ * Own stacking context so the Backdrop's `-z-10` layer scopes inside #root
+ * (above #root's background, below content) instead of falling into the html
+ * negative-z band where the body's canvas background would paint over it.
+ */
+#root {
+  isolation: isolate;
+}
+
 @utility scrollbar-slim {
   scrollbar-width: thin;
   scrollbar-color: var(--color-slate-600) transparent;

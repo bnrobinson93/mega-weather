@@ -2,7 +2,7 @@ import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
 
 function RootLayout() {
   return (
-    <div className="min-h-svh bg-slate-900 text-white flex flex-col items-center">
+    <div className="min-h-svh text-white flex flex-col items-center">
       <div className="w-full max-w-md flex flex-col gap-6 pb-10">
         <div className="flex items-center justify-center pt-6 px-4">
           <Link
