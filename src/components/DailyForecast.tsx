@@ -3,6 +3,7 @@ import type { DailyPoint } from '../services/openMeteo'
 
 interface Props {
   data: DailyPoint[]
+  onSelectDay: (day: DailyPoint) => void
 }
 
 function formatDay(dateStr: string): string {
@@ -12,7 +13,7 @@ function formatDay(dateStr: string): string {
   return d.toLocaleDateString('en-US', { weekday: 'short' })
 }
 
-export function DailyForecast({ data }: Props) {
+export function DailyForecast({ data, onSelectDay }: Props) {
   return (
     <div className="w-full">
       <h2 className="text-xs font-semibold text-slate-500 uppercase tracking-wider px-4 mb-3">
@@ -22,9 +23,11 @@ export function DailyForecast({ data }: Props) {
         {data.map((d) => {
           const info = getWeatherInfo(d.weatherCode)
           return (
-            <div
+            <button
+              type="button"
               key={d.date}
-              className="flex items-center gap-3 bg-slate-800/50 rounded-xl px-4 py-3"
+              onClick={() => onSelectDay(d)}
+              className="flex items-center gap-3 bg-slate-800/50 hover:bg-slate-800 rounded-xl px-4 py-3 text-left cursor-pointer transition-colors"
             >
               <span className="text-sm text-slate-300 w-12 shrink-0">
                 {formatDay(d.date)}
@@ -44,7 +47,8 @@ export function DailyForecast({ data }: Props) {
                 </span>
                 <span className="text-slate-500">{Math.round(d.tempMin)}°</span>
               </div>
-            </div>
+              <span className="text-slate-600 text-lg leading-none">›</span>
+            </button>
           )
         })}
       </div>

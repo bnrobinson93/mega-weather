@@ -1,16 +1,9 @@
+import { formatHour } from '../lib/datetime'
 import { getWeatherInfo } from '../lib/weatherCodes'
 import type { HourlyPoint } from '../services/openMeteo'
 
 interface Props {
   data: HourlyPoint[]
-}
-
-function formatHour(iso: string): string {
-  const d = new Date(iso)
-  const h = d.getHours()
-  if (h === 0) return '12am'
-  if (h === 12) return '12pm'
-  return h < 12 ? `${h}am` : `${h - 12}pm`
 }
 
 export function HourlyForecast({ data }: Props) {

@@ -1,3 +1,5 @@
+import type { UvHourlyPoint } from '../lib/uv'
+
 export interface CurrentWeather {
   temperature: number
   apparentTemperature: number
@@ -6,6 +8,7 @@ export interface CurrentWeather {
   windSpeed: number
   windDirection: number
   precipitation: number
+  uvIndex: number
   isDay: boolean
 }
 
@@ -15,6 +18,7 @@ export interface HourlyPoint {
   apparentTemperature: number
   weatherCode: number
   precipitationProbability: number
+  uvIndex: number
 }
 
 export interface DailyPoint {
@@ -30,10 +34,19 @@ export interface DailyPoint {
 export interface WeatherData {
   current: CurrentWeather
   hourly: HourlyPoint[]
+  uvToday: UvHourlyPoint[]
   daily: DailyPoint[]
   timezone: string
   latitude: number
   longitude: number
+}
+
+export interface DayHourlyPoint {
+  time: string
+  temperature: number
+  precipitationProbability: number
+  uvIndex: number
+  weatherCode: number
 }
 
 const BASE = 'https://api.open-meteo.com/v1/forecast'
@@ -61,6 +74,7 @@ export async function fetchWeather(
       'wind_speed_10m',
       'wind_direction_10m',
       'precipitation',
+      'uv_index',
       'is_day',
     ].join(','),
     hourly: [
@@ -68,6 +82,7 @@ export async function fetchWeather(
       'apparent_temperature',
       'weather_code',
       'precipitation_probability',
+      'uv_index',
     ].join(','),
     daily: [
       'weather_code',
@@ -100,7 +115,13 @@ export async function fetchWeather(
       weatherCode: d.hourly.weather_code[sliceFrom + i],
       precipitationProbability:
         d.hourly.precipitation_probability[sliceFrom + i],
+      uvIndex: d.hourly.uv_index[sliceFrom + i],
     }))
+
+  const today = d.daily.time[0]
+  const uvToday: UvHourlyPoint[] = d.hourly.time
+    .map((time: string, i: number) => ({ time, value: d.hourly.uv_index[i] }))
+    .filter((p: UvHourlyPoint) => p.time.slice(0, 10) === today)
 
   const daily: DailyPoint[] = d.daily.time.map((date: string, i: number) => ({
     date,
@@ -121,12 +142,46 @@ export async function fetchWeather(
       windSpeed: d.current.wind_speed_10m,
       windDirection: d.current.wind_direction_10m,
       precipitation: d.current.precipitation,
+      uvIndex: d.current.uv_index,
       isDay: d.current.is_day === 1,
     },
     hourly,
+    uvToday,
     daily,
     timezone: d.timezone,
     latitude: d.latitude,
     longitude: d.longitude,
   }
+}
+
+export async function fetchDayHourly(
+  lat: number,
+  lon: number,
+  date: string,
+): Promise<DayHourlyPoint[]> {
+  const params = new URLSearchParams({
+    latitude: lat.toString(),
+    longitude: lon.toString(),
+    hourly: [
+      'temperature_2m',
+      'precipitation_probability',
+      'uv_index',
+      'weather_code',
+    ].join(','),
+    start_date: date,
+    end_date: date,
+    ...COMMON_PARAMS,
+  })
+
+  const res = await fetch(`${BASE}?${params}`)
+  if (!res.ok) throw new Error(`Day forecast fetch failed: ${res.status}`)
+  const d = await res.json()
+
+  return d.hourly.time.map((time: string, i: number) => ({
+    time,
+    temperature: d.hourly.temperature_2m[i],
+    precipitationProbability: d.hourly.precipitation_probability[i],
+    uvIndex: d.hourly.uv_index[i],
+    weatherCode: d.hourly.weather_code[i],
+  }))
 }

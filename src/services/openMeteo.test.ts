@@ -20,6 +20,7 @@ function makeResponse() {
       wind_speed_10m: 8.2,
       wind_direction_10m: 180,
       precipitation: 0,
+      uv_index: 4.5,
       is_day: 1,
     },
     hourly: {
@@ -28,6 +29,7 @@ function makeResponse() {
       apparent_temperature: times.map(() => 68),
       weather_code: times.map(() => 0),
       precipitation_probability: times.map(() => 10),
+      uv_index: times.map(() => 3),
     },
     daily: {
       time: [
