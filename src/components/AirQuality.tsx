@@ -1,25 +1,16 @@
 import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
-import {
-  Area,
-  AreaChart,
-  ReferenceLine,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from 'recharts'
+import { lazy, Suspense, useState } from 'react'
 import { useInView } from '../hooks/useInView'
-import {
-  fetchAirQuality,
-  type UvHourlyPoint,
-  usAqiCategory,
-  uvCategory,
-} from '../services/airQuality'
+import { type UvHourlyPoint, uvCategory } from '../lib/uv'
+import { fetchAirQuality, usAqiCategory } from '../services/airQuality'
+
+const UvChart = lazy(() => import('./UvChart'))
 
 interface Props {
   lat: number
   lon: number
+  uvIndex: number
+  uvToday: UvHourlyPoint[]
 }
 
 function Stat({
@@ -44,84 +35,7 @@ function AirQualitySkeleton() {
   return <div className="mx-4 h-28 bg-slate-800/50 rounded-2xl animate-pulse" />
 }
 
-function formatHour(iso: string): string {
-  const h = new Date(iso).getHours()
-  if (h === 0) return '12a'
-  if (h === 12) return '12p'
-  return h < 12 ? `${h}a` : `${h - 12}p`
-}
-
-function UvChart({ points }: { points: UvHourlyPoint[] }) {
-  const currentHour = new Date().getHours()
-  const data = points.map((p, i) => ({
-    hour: formatHour(p.time),
-    uv: Math.round(p.value * 10) / 10,
-    isCurrent: i === currentHour,
-  }))
-
-  // only label midnight, 6am, noon, 6pm
-  const labelSet = new Set(['12a', '6a', '12p', '6p'])
-
-  return (
-    <ResponsiveContainer width="100%" height={110}>
-      <AreaChart
-        data={data}
-        margin={{ top: 8, right: 4, left: -28, bottom: 0 }}
-      >
-        <defs>
-          <linearGradient id="uvGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#fbbf24" stopOpacity={0.35} />
-            <stop offset="95%" stopColor="#fbbf24" stopOpacity={0} />
-          </linearGradient>
-        </defs>
-        <XAxis
-          dataKey="hour"
-          tick={{ fill: '#64748b', fontSize: 10 }}
-          tickLine={false}
-          axisLine={false}
-          interval={0}
-          tickFormatter={(v) => (labelSet.has(v) ? v : '')}
-        />
-        <YAxis
-          domain={[0, 'dataMax + 1']}
-          tick={{ fill: '#64748b', fontSize: 10 }}
-          tickLine={false}
-          axisLine={false}
-          width={36}
-        />
-        <Tooltip
-          contentStyle={{
-            background: '#1e293b',
-            border: '1px solid #334155',
-            borderRadius: 8,
-            fontSize: 12,
-            color: '#f1f5f9',
-          }}
-          itemStyle={{ color: '#fbbf24' }}
-          formatter={(v) => [typeof v === 'number' ? v.toFixed(1) : v, 'UV']}
-          labelFormatter={(label) => label}
-        />
-        <ReferenceLine
-          x={data[currentHour]?.hour}
-          stroke="#475569"
-          strokeDasharray="3 3"
-          strokeWidth={1}
-        />
-        <Area
-          type="monotone"
-          dataKey="uv"
-          stroke="#fbbf24"
-          strokeWidth={2}
-          fill="url(#uvGrad)"
-          dot={false}
-          activeDot={{ r: 3, fill: '#fbbf24', strokeWidth: 0 }}
-        />
-      </AreaChart>
-    </ResponsiveContainer>
-  )
-}
-
-export function AirQuality({ lat, lon }: Props) {
+export function AirQuality({ lat, lon, uvIndex, uvToday }: Props) {
   const [showUvChart, setShowUvChart] = useState(false)
   const [inView, ref] = useInView()
   const { data, error } = useQuery({
@@ -139,7 +53,7 @@ export function AirQuality({ lat, lon }: Props) {
       {data &&
         (() => {
           const aqi = usAqiCategory(data.usAqi)
-          const uv = uvCategory(data.uvIndex)
+          const uv = uvCategory(uvIndex)
           return (
             <div className="bg-slate-800/50 rounded-2xl px-4 py-4 flex flex-col gap-4">
               <div className="flex items-center gap-3">
@@ -161,7 +75,7 @@ export function AirQuality({ lat, lon }: Props) {
                 >
                   <span className="text-xs text-slate-500">UV Index</span>
                   <span className={`text-2xl font-bold ${uv.color}`}>
-                    {data.uvIndex.toFixed(1)}
+                    {uvIndex.toFixed(1)}
                   </span>
                   <span
                     className={`text-xs font-medium flex items-center gap-1 ${uv.color}`}
@@ -174,12 +88,18 @@ export function AirQuality({ lat, lon }: Props) {
                 </button>
               </div>
 
-              {showUvChart && data.uvHourly.length > 0 && (
+              {showUvChart && uvToday.length > 0 && (
                 <div className="border-t border-slate-700/50 pt-2">
                   <p className="text-[10px] text-slate-500 mb-1">
                     Today's UV index
                   </p>
-                  <UvChart points={data.uvHourly} />
+                  <Suspense
+                    fallback={
+                      <div className="h-[110px] bg-slate-800/50 rounded animate-pulse" />
+                    }
+                  >
+                    <UvChart points={uvToday} />
+                  </Suspense>
                 </div>
               )}
 

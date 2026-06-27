@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { fetchAirQuality, usAqiCategory, uvCategory } from './airQuality'
+import { fetchAirQuality, usAqiCategory } from './airQuality'
 
 beforeEach(() => vi.unstubAllGlobals())
 
@@ -18,22 +18,6 @@ describe('usAqiCategory', () => {
   })
 })
 
-describe('uvCategory', () => {
-  it.each([
-    [0, 'Low'],
-    [2, 'Low'],
-    [3, 'Moderate'],
-    [5, 'Moderate'],
-    [6, 'High'],
-    [7, 'High'],
-    [8, 'Very High'],
-    [10, 'Very High'],
-    [11, 'Extreme'],
-  ])('uv %i → %s', (uv, label) => {
-    expect(uvCategory(uv).label).toBe(label)
-  })
-})
-
 describe('fetchAirQuality', () => {
   const mockResponse = {
     current: {
@@ -41,16 +25,6 @@ describe('fetchAirQuality', () => {
       european_aqi: 27,
       pm2_5: 8.7,
       pm10: 12.8,
-      uv_index: 6.25,
-    },
-    hourly: {
-      time: Array.from(
-        { length: 24 },
-        (_, i) => `2025-01-01T${String(i).padStart(2, '0')}:00`,
-      ),
-      uv_index: Array.from({ length: 24 }, (_, i) =>
-        i < 6 || i > 20 ? 0 : (i - 6) * 0.8,
-      ),
     },
   }
 
@@ -68,10 +42,19 @@ describe('fetchAirQuality', () => {
     expect(data.europeanAqi).toBe(27)
     expect(data.pm2_5).toBe(8.7)
     expect(data.pm10).toBe(12.8)
-    expect(data.uvIndex).toBe(6.25)
-    expect(data.uvHourly).toHaveLength(24)
-    expect(data.uvHourly[0].time).toBe('2025-01-01T00:00')
-    expect(data.uvHourly[0].value).toBe(0)
+  })
+
+  it('requests only AQI/PM, not UV', async () => {
+    const spy = vi.fn().mockResolvedValue({
+      ok: true,
+      json: () => Promise.resolve(mockResponse),
+    })
+    vi.stubGlobal('fetch', spy)
+
+    await fetchAirQuality(30.27, -97.74)
+    const url = spy.mock.calls[0][0] as string
+    expect(url).not.toContain('uv_index')
+    expect(url).not.toContain('hourly')
   })
 
   it('throws on non-ok response', async () => {
