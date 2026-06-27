@@ -6,7 +6,13 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!!**/dist", "!!**/dev-dist", "!!**/public"]
+    "includes": [
+      "**",
+      "!!**/dist",
+      "!!**/dev-dist",
+      "!!**/public",
+      "!!**/routeTree.gen.ts"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -24,6 +30,11 @@
       "quoteStyle": "single",
       "trailingCommas": "all",
       "semicolons": "asNeeded"
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
     }
   },
   "assist": {
