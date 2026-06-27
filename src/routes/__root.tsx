@@ -1,10 +1,7 @@
-import { AirQuality } from './components/AirQuality'
-import { CurrentWeather } from './components/CurrentWeather'
-import { DailyForecast } from './components/DailyForecast'
-import { HourlyForecast } from './components/HourlyForecast'
-import { ModelBadge } from './components/ModelBadge'
-import { useGeolocation } from './hooks/useGeolocation'
-import { useWeather } from './hooks/useWeather'
+import { createRootRoute, Outlet } from '@tanstack/react-router'
+import { WeatherProvider } from '../contexts/weather'
+import { useGeolocation } from '../hooks/useGeolocation'
+import { useWeather } from '../hooks/useWeather'
 
 function LoadingSpinner() {
   return (
@@ -39,7 +36,7 @@ function ErrorState({
   )
 }
 
-export default function App() {
+function RootLayout() {
   const geo = useGeolocation()
   const weather = useWeather(
     geo.status === 'success' ? geo.lat : null,
@@ -50,9 +47,6 @@ export default function App() {
     geo.status === 'loading' ||
     (geo.status === 'success' && weather.status === 'loading') ||
     (geo.status === 'success' && weather.status === 'idle')
-
-  const lat = weather.status === 'success' ? weather.weather.latitude : null
-  const lon = weather.status === 'success' ? weather.weather.longitude : null
 
   return (
     <div className="min-h-svh bg-slate-900 text-white flex flex-col items-center">
@@ -84,21 +78,17 @@ export default function App() {
           </div>
         )}
 
-        {weather.status === 'success' && lat != null && lon != null && (
-          <>
-            <CurrentWeather
-              current={weather.weather.current}
-              locationName={weather.location.displayName}
-            />
-
-            <div className="flex justify-center px-4">
-              <ModelBadge lat={lat} lon={lon} />
-            </div>
-
-            <HourlyForecast data={weather.weather.hourly} />
-            <AirQuality lat={lat} lon={lon} />
-            <DailyForecast data={weather.weather.daily} />
-          </>
+        {weather.status === 'success' && (
+          <WeatherProvider
+            value={{
+              weather: weather.weather,
+              location: weather.location,
+              lat: weather.weather.latitude,
+              lon: weather.weather.longitude,
+            }}
+          >
+            <Outlet />
+          </WeatherProvider>
         )}
 
         <footer className="mt-auto px-4 py-6 text-center text-xs text-slate-600">
@@ -125,3 +115,5 @@ export default function App() {
     </div>
   )
 }
+
+export const Route = createRootRoute({ component: RootLayout })
